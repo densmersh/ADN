@@ -1,34 +1,13 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Home Page";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Новостной сайт</title>
-</head>
-<body>
-    <div>
-        <h3>Новости</h3>
-        <table>
-            <tr>
-                <td><p>Название новости</p></td>
-                <td><p>Автор</p></td>
-                <td><p>Рейтинг</p></td>
-                <td></td>
-            </tr>
-            @foreach (var n in ViewBag.Newss)
-            {
-                <tr>
-                    <td><p>@n.Name</p></td>
-                    <td><p>@n.Author</p></td>
-                    <td><p>@n.Raiting</p></td>
-                    <td><p><a href="/Home/Buy/@n.Id">Открыть</a></p></td>
-                </tr>
-            }
-        </table>
+<div class="jumbotron">
+    <h1>Angular 2 QuickStart</h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <!-- Angular2 Code -->
+        <my-app>Loading...</my-app>
+        <!-- Angular2 Code -->
     </div>
-</body>
-</html>
+</div>
