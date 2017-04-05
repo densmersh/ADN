@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Новостной сайт</title>
+</head>
+<body>
+    <div>
+        <h3>Новости</h3>
+        <table>
+            <tr>
+                <td><p>Название новости</p></td>
+                <td><p>Автор</p></td>
+                <td><p>Рейтинг</p></td>
+                <td></td>
+            </tr>
+            @foreach (var n in ViewBag.Newss)
+            {
+                <tr>
+                    <td><p>@n.Name</p></td>
+                    <td><p>@n.Author</p></td>
+                    <td><p>@n.Raiting</p></td>
+                    <td><p><a href="/Home/Buy/@n.Id">Открыть</a></p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
