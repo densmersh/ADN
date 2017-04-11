@@ -1,11 +1,12 @@
-﻿import { Component} from '@angular/core';
-
+﻿import { Component, OnInit} from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { News } from './model';
+import { NgForm } from '@angular/forms';
+
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'my-app',
@@ -16,7 +17,29 @@ import 'rxjs/add/operator/map'
                     <p>Текст новости: {{news?.Text}}</p>
                     <p>Рейтинг новости: {{news?.Raiting}}</p>
                     <p>Дата новости: {{news?.Date|date:'yyyy-MM-dd HH:mm'}}</p>
-                 </li>`,
+                 </li>
+                
+          
+
+<div class="ui raised segment">   
+    <form #news="ngForm" (ngSubmit)="postNews(news.value)"  class="ui form">
+ 
+      <div class="field">  
+        <input type="text" id="skuInput" name="Name" ngModel>  
+      </div>
+        <div class="field">  
+        <input type="text" id="skuInput" name="Author" ngModel>  
+      </div>
+        <div class="field">  
+        <input type="text" id="skuInput" name="Text" ngModel>  
+      </div>
+
+      <button type="submit" class="ui button">Submit</button>  
+    </form>  
+  </div>  
+           
+`
+    ,
 })
 @Injectable()
 export class AppComponent {
@@ -31,14 +54,16 @@ export class AppComponent {
                 for (let index in newses) {
                     let news = newses[index];
                     this.newses.push({ Id: news.Id, Name:news.Name, Author: news.Author, Text: news.Text, Raiting: news.Raiting , Date:news.Date});
-                    console.log(news.Id);
-                }
-            });
-
-
-        }
-
+                    }});
     }
+
+    postNews(form: any) {
+        console.log(form);
+        let headers = new Headers({ 'Content-Type':'application/json;charset=utf-8' });
+        return this.http.post('http://localhost:5188/api/values', JSON.stringify(form), { headers: headers })
+            .map((resp: Response) => resp.json()).subscribe();
+    }
+}
    
 
 

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Helpers;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.UI;
 using ADN.Models;
 
 namespace ADN.Controllers
 {
+    [EnableCors(origins: "http://localhost:5188", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         NewsContext db = new NewsContext();
@@ -24,8 +28,9 @@ namespace ADN.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]News news)
         {
+            news.Date = DateTime.Now;
         }
 
         // PUT api/<controller>/5

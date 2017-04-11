@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ADN.Models;
+using WebApiContrib.Formatting.Jsonp;
 
 namespace ADN
 {
@@ -15,6 +16,7 @@ namespace ADN
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.AddJsonpFormatter();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
