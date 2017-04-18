@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div class="ui raised segment">
+        <form #news="ngForm" (ngSubmit) ="postNews(news.value)" class="ui form">
+
+            <div class="field">
+                <input type="text" id="skuInput" name="Name" ngModel>
+            </div>
+            <div class="field">
+                <input type="text" id="skuInput" name="Author" ngModel>
+            </div>
+            <div class="field">
+                <input type="text" id="skuInput" name="Text" ngModel>
+            </div>
+
+            <button type="submit" class="ui button">Submit</button>
+        </form>
+    </div>  
+</body>
+</html>

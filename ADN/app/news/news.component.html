@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <button (click)="getNews()">Open all of news</button>
+    <li *ngFor="let news of newses">
+        <p>Название новости:{{news?.Name}}</p>
+        <p>Автор новости: {{news?.Author}}</p>
+        <p>Текст новости: {{news?.Text}}</p>
+        <p>Рейтинг новости: {{news?.Raiting}}</p>
+        <p>Дата новости: {{news?.Date}}</p>
+    </li>
+</body>
+</html>
